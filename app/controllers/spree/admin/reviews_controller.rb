@@ -27,7 +27,7 @@ private
   def collection
     params[:q] ||= {}
     # params[:q][:approved_eq] = true if params[:q][:approved_eq].nil?
-
+    params[:q][:approved_eq]  =   true
     @search = Spree::Review.ransack(params[:q])
     @collection = @search.result.includes([:product, :user, :feedback_reviews]).page(params[:page]).per(params[:per_page])
   end
